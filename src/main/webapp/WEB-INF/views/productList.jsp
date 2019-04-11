@@ -1,0 +1,67 @@
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="/WEB-INF/views/template/header.jsp" %>
+
+
+<div class="container-wrapper">
+    <div class="container">
+        <div class="page-header">
+            <h1>All Products</h1>
+            <p class="lead">Checkout all the awesome instruments</p>
+        </div>
+        <br/>
+        
+     
+        
+        
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr class="bg-success">
+                <th>Photo</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+            </thead>
+            <%-- products instanca nakacena na model u home controller-u --%>
+            <c:forEach items="${products}" var="product">
+                <tr>
+                    <td><img src="<c:url value="/resources/images/${product.productId}.png" /> " alt="image" style="width: 100%;"/></td>
+                    <td>${product.productName}</td>
+                    <td>${product.productCategory}</td>
+                    <td>${product.productPrice} USD</td>
+                        <%-- Spring tagom po putanji koja uzima id proizvoda koji hocemo da vidimo i prikazuje ga --%>
+                    <td><a href="<spring:url value="/product/viewProduct/${product.productId}"/> "><span
+                            class="btn btn-primary">View Detail</span></a></td>
+                </tr>
+            </c:forEach>
+        </table>
+            
+          
+        <br><br>
+
+        <%@include file="/WEB-INF/views/template/footer.jsp" %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
